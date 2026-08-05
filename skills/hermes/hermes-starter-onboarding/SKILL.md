@@ -1,6 +1,6 @@
 ---
 name: hermes-starter-onboarding
-description: Use when a new Hermes profile needs guided first-run setup, identity choices, memory preferences, optional integrations, tool capabilities, or recurring daily briefing, wellness check-in, and stock-quote jobs. Plan the setup conversationally, obtain approval, apply only the selected changes, and verify every result.
+description: Use when a new Hermes profile needs guided first-run setup, identity choices, memory preferences, optional integrations, a step-by-step toolset walkthrough, web-search backend setup, or recurring daily briefing, wellness check-in, and stock-quote jobs. Plan the setup conversationally, obtain approval, apply only the selected changes, and verify every result.
 version: 1.0.0
 author: Hermes Agent
 license: MIT
@@ -144,6 +144,65 @@ Ask only about capabilities relevant to the user's goals:
 - **Calendar, reminders, email, or other accounts:** connect only the specific service requested, with the user completing authentication.
 
 For persistent toolset changes, use `hermes tools` rather than guessing a configuration key. For a one-off session, use the documented `hermes chat --toolsets "web,terminal"` form when appropriate instead of changing the profile.
+
+### Toolset walkthrough — match the reference setup, one toolset at a time
+
+The goal is a profile that works as smoothly as a fully configured reference setup. Do not stop at "enable web" — walk the user through **every toolset the reference profile ships with**, one at a time, and ask for an explicit yes/no on each. Explain what each does in plain language before asking.
+
+First, list what the profile currently has so the user sees the starting point:
+
+```bash
+hermes tools
+```
+
+Then walk this reference set (the CLI toolsets this starter profile pre-enables). For each, say what it's for and ask: "Enable <name>?"
+
+| Toolset | Plain-language purpose |
+|---|---|
+| `web` | Web search and fetching page content. Needs a search backend (below). |
+| `browser` | Drive a real browser: click, fill forms, log into sites. Broader than `web`. |
+| `terminal` | Run shell commands. Higher-trust; explain the risk before enabling. |
+| `file` | Read and write local files. |
+| `code_execution` | Run Python for data work, calculations, multi-step scripts. |
+| `computer_use` | Drive the desktop GUI in the background (click apps, screenshots). macOS. |
+| `memory` | Remember preferences and facts across conversations. |
+| `session_search` | Search past conversations. |
+| `delegation` | Spawn sub-agents for parallel or specialist work. |
+| `skills` | Load reusable procedures (the skills in this profile). |
+| `cronjob` | Scheduled/recurring tasks (briefings, reminders). |
+| `todo` | Track multi-step tasks within a session. |
+| `kanban` | Durable multi-session task boards for longer projects. |
+| `image_gen` | Generate images from text. Needs an image backend/key. |
+| `video_gen` | Generate short video clips. Needs a video backend/key. |
+| `vision` | Read images the user shares. |
+| `tts` | Text-to-speech voice output. Needs a TTS provider/key. |
+| `video` | Analyze video files. |
+| `clarify` | Ask the user structured multiple-choice questions mid-task. |
+
+Apply the approved selections through `hermes tools`. Some toolsets only appear there when their dependency is present (an API key, a backend, a driver) — if a toolset the user wants is missing from the list, say so and move to its setup step rather than pretending it is enabled.
+
+#### Web search backend (required for `web` to return results)
+
+`web` needs a search provider. This is a **global** Hermes setting, not profile config — set it once and every profile uses it. Ask the user which they have:
+
+- **Self-hosted SearXNG** — private, free, no key. Ask for *their* instance URL, then configure the web-search backend to use it. Never hardcode or assume an instance address.
+- **A hosted search API** (Brave, Tavily, Exa, etc.) — ask them to complete the provider's own key flow; never take the key in chat.
+- **Not sure** — point them to `hermes setup`, which walks the search-backend choice interactively.
+
+Verify with a real query afterward (e.g. `web_search("Hermes Agent")`) and confirm results come back before calling it working.
+
+#### Provider / model
+
+Confirm the model provider works end-to-end. The profile defaults to `deepseek`; if the user uses another provider, set it and run one real chat turn to confirm the key is valid. Do not ship or assume any specific API key.
+
+#### Optional integrations with their own setup
+
+Some capabilities need more than a toolset toggle. Offer each and pause at its credential/permission gate:
+
+- **Voice** (`tts`, and speech recognition if wanted) — needs a voice provider.
+- **Image/video generation** — needs the matching backend key.
+- **Calendar / reminders / email** — connect only the specific service requested, user completes auth.
+- **Browser automation** — needs a browser backend available on the machine.
 
 ## Phase 2 — Present the Setup Plan
 
@@ -348,6 +407,9 @@ Cron schedules use the configured host/gateway timezone unless the deployment su
 - [ ] Memory choice was explicitly selected and verified with `hermes memory status`.
 - [ ] Obsidian or other integrations were distinguished from their Hermes skills and configured only after approval.
 - [ ] Toolset changes used `hermes tools` or a documented one-off toolset override.
+- [ ] Each toolset in the reference walkthrough was individually accepted or declined by the user.
+- [ ] The web-search backend was explicitly chosen (SearXNG URL, hosted API, or `hermes setup`) and verified with a real query.
+- [ ] Toolsets that need a backend/key were not reported as enabled until their dependency was present.
 - [ ] Existing jobs were listed before any recurring job was created.
 - [ ] Daily briefing, wellness check-in, health reminder, and stock-quote jobs were created only when individually approved.
 - [ ] Every LLM-driven cron prompt is self-contained and does not depend on current-chat memory.
