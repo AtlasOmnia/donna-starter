@@ -33,7 +33,7 @@ starts with generic community defaults and learns what you tell it.
 
 ```bash
 mkdir -p ~/.hermes/profiles
-git clone https://github.com/<owner>/donna-starter.git ~/.hermes/profiles/donna
+git clone https://github.com/AtlasOmnia/donna-starter.git ~/.hermes/profiles/donna
 ```
 
 This repository *is* the profile — clone it straight into your Hermes profiles
