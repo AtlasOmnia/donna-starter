@@ -1,5 +1,7 @@
 # Donna — a starter Hermes profile
 
+![Donna](assets/donna.png)
+
 Donna is a pre-configured [Hermes Agent](https://hermes-agent.nousresearch.com/docs)
 profile for people who want a capable, opinionated assistant without building one
 from scratch. Clone it, point it at a model provider, and a guided first-run
