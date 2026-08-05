@@ -61,8 +61,9 @@ The setup must work for a public starter profile. Never assume the user's name, 
 6. Keep setup choices local to the active profile. Do not edit another Hermes profile or global configuration unless the user explicitly requests that scope.
 7. After a persistent toolset or provider change, tell the user whether a new session or gateway restart is required. Do not claim a new tool is available until a fresh-process check confirms it.
 8. A cron job runs in a fresh session with no current-chat context. Every LLM-driven cron prompt must be self-contained.
-9. Do not put memory writes in cron prompts. Mnemosyne is provider-injected, not a toolset, and cron contexts intentionally skip Mnemosyne tools. Health responses must not be stored automatically.
-10. Never use `enabled_toolsets: ["mnemosyne"]`; that is not a valid configuration. Use the `memory` provider setup for memory and the `cronjob` tool for schedules.
+9. **Run the orientation in the live session — do not delegate it to a sub-agent.** Onboarding is a conversation: each answer shapes the next question, and the setup actions (a `config set`, a toolset toggle) are instant. Spawning a sub-agent to "set things up in the background" would sever that loop and add indirection, not reduce derailment. Keep it single-threaded and interactive.
+10. Do not put memory writes in cron prompts. Mnemosyne is provider-injected, not a toolset, and cron contexts intentionally skip Mnemosyne tools. Health responses must not be stored automatically.
+11. Never use `enabled_toolsets: ["mnemosyne"]`; that is not a valid configuration. Use the `memory` provider setup for memory and the `cronjob` tool for schedules.
 
 ## Phase 0 — Inspect Before Changing Anything
 
@@ -195,6 +196,13 @@ Verify with a real query afterward (e.g. `web_search("Hermes Agent")`) and confi
 #### Provider / model
 
 Confirm the model provider works end-to-end. The profile defaults to `deepseek`; if the user uses another provider, set it and run one real chat turn to confirm the key is valid. Do not ship or assume any specific API key.
+
+**Reusing providers the user already configured.** Many newcomers ran `hermes setup` once before cloning this profile, so a working provider and API key may already exist in their **default** profile or global config. Ask first — "Do you already have a model provider working in another Hermes profile?" — and offer to bring it over instead of making them re-enter a key:
+
+- **API keys live in `.env`, not config.yaml.** A profile reads its own `~/.hermes/profiles/<name>/.env` first, then falls back to the global `~/.hermes/.env`. If the key is already in the global `.env`, this profile picks it up automatically — nothing to copy. Only add a profile-local `.env` when the user wants a *different* key for this profile than the global one.
+- **Never ask them to paste the key into chat.** Point them to where it already is, or have them run `hermes setup` / edit `.env` themselves. Read-only confirmation that a key is *present* (e.g. `hermes auth list`) is fine; do not print the value.
+- **Provider/model selection is config, not a secret.** Set `hermes --profile donna config set model.provider <provider>` and `model.default <model>` to match whatever already works, then verify with one real chat turn.
+- **Copying provider *settings* between profiles is fine; copying *credentials* is not something the agent does for them.** If they want the same custom-provider block (base_url, etc.) that exists in their default profile, walk them through re-adding it here with `hermes config set` rather than editing another profile's files — keeping with the rule that setup stays local to the active profile.
 
 #### Optional integrations with their own setup
 

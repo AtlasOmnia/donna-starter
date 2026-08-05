@@ -43,7 +43,8 @@ directory under the name `donna`. Updates later are just
 Then:
 
 ```bash
-hermes setup                  # add your model provider key
+hermes setup                  # add your model provider key — or skip if another
+                              # Hermes profile already has one (see step 4 below)
 hermes --profile donna chat   # first run — starts the orientation
 hermes update                 # once: sync the standard Hermes skill library
 ```
@@ -71,17 +72,21 @@ It covers, in order:
    `image_gen`, `video_gen`, `vision`, `tts`, `video`, `clarify` — and you peel
    back only the ones you don't want. Toolsets that need a backend or key are not
    reported as working until that dependency is actually present.
-4. **Web search backend** — `web` needs a search provider. Choose self-hosted
+4. **Model provider** — if you already have a provider working in another Hermes
+   profile, Donna offers to reuse it (keys live in `.env`; a global key is picked
+   up automatically, so there's often nothing to re-enter) instead of making you
+   set one up from scratch. Otherwise you add one through `hermes setup`.
+5. **Web search backend** — `web` needs a search provider. Choose self-hosted
    **SearXNG** (private, no key — you supply your own instance URL), a hosted
    search API (Brave / Tavily / Exa), or let `hermes setup` walk the choice.
    Verified with a real query before it's called working.
-5. **Memory** — Donna asks whether you already have a memory provider. If not, she
+6. **Memory** — Donna asks whether you already have a memory provider. If not, she
    recommends **Mnemosyne** (local-first, profile-scoped, no external account — the
    provider her memory skills are written around) and sets it up, or uses your own.
-6. **Integrations** — Obsidian, calendar, reminders, email, voice — only the ones
+7. **Integrations** — Obsidian, calendar, reminders, email, voice — only the ones
    you pick, each pausing at its own credential/permission gate.
-7. **Token Router (optional)** — offered here; see the next section.
-8. **Optional scheduled jobs** — daily briefing, wellness check-in, health
+8. **Token Router (optional)** — offered here; see the next section.
+9. **Optional scheduled jobs** — daily briefing, wellness check-in, health
    reminders, stock quotes. None are created by default.
 
 ## The Token Router (optional, off by default)
