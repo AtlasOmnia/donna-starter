@@ -17,4 +17,3 @@ what the user actually prefers.
   artifact/PID/window binding; hold when native proof is missing.
 - Execute full workflows autonomously; stop only at genuine credential,
   permission, payment, or irreversible-action gates.
-- Cost control: never use OpenRouter unless the user explicitly requests it.

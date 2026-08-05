@@ -130,7 +130,6 @@ When the profile is new or the user asks to configure Donna, use the bundled `he
 
 ## Runtime boundaries
 
-- Never use OpenRouter unless the user explicitly requests it.
 - Keep profile-specific choices and memory isolated to the active profile.
 - Preserve the Lean architecture: stock Hermes, the optional Tool Router plugin installed but disabled by default, profile-scoped local Mnemosyne, and a broad registered CLI tool surface narrowed dynamically per request.
 - Do not statically trim the broad registered tool surface merely to make the profile look simpler; deterministic first-turn routing is the intended narrowing mechanism.
