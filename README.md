@@ -205,9 +205,17 @@ the matching task comes up — you do not call them by hand.
   profile-scoped Mnemosyne store as you work.
 - **Credentials live in `.env`.** Copy `.env.example` to `.env` and fill in the
   keys you need. Never commit it — `.gitignore` already excludes it.
-- **Manual approvals are on** (`approvals.mode: manual`) — Donna asks before
-  destructive or irreversible actions. Tune in `config.yaml`.
-- **No OpenRouter by default** — direct provider calls only.
+- **Approvals & autonomy.** Donna is written to act, not pester — she executes
+  routine, reversible, in-scope work without asking and only pauses for
+  destructive, external, payment, or credential actions (see `AGENTS.md` and
+  `SOUL.md`). Separately, Hermes's own tool-approval prompts ship as
+  `approvals.mode: manual` in `config.yaml`, so the first few file writes or
+  terminal commands may ask for a y/n. If you want her to run those without
+  asking, set `hermes --profile donna config set approvals.mode auto` — that's a
+  trust setting you choose, not one we ship.
+- **Provider.** The default model provider is `deepseek` — direct calls only. (The
+  optional Token Router classifier is a separate, opt-in place where OpenRouter is
+  a natural fit; see that section.)
 
 ## License & credits
 
