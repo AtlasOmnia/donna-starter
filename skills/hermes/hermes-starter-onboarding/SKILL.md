@@ -103,21 +103,22 @@ Ask what the assistant is mainly for. Offer plain-language choices:
 - Voice conversations
 - Business or professional workflows
 
-The user may choose more than one. Recommend the smallest sufficient capability bundle rather than enabling everything automatically.
+The user may choose more than one. All toolsets are already enabled by default in this profile, so the goal is to confirm what they'll use and peel back the rest — not to build up from nothing.
 
 ### Memory
 
-Ask:
+Ask whether the user already has a memory provider set up:
 
-> "Should I remember useful preferences between conversations, or keep each conversation more separate?"
+> "Do you already have a memory provider configured — Mnemosyne, Honcho, Mem0, or something else — or should I set one up?"
 
-Explain the choices:
+- **If they have one (or want to pick their own):** run `hermes memory setup` and let them authenticate through the provider's own flow. Do not switch providers silently.
+- **If they don't (or are unsure):** recommend **Mnemosyne** — it is the provider this profile's skills are written around (`hermes-mnemosyne`, `mnemosyne-maintenance`), it is profile-scoped and local-first, and it needs no external account. Offer to set it up:
+  - enable profile memory with `hermes config set memory.memory_enabled true` and `hermes config set memory.provider mnemosyne`,
+  - verify with `hermes memory status`.
+  - Keep Mnemosyne data profile-scoped; do not expose it as a cron toolset.
+- **If they prefer no persistent memory:** disable it with `hermes config set memory.memory_enabled false`.
 
-- **No persistent memory:** disable profile memory with `hermes config set memory.memory_enabled false`.
-- **Local persistent memory:** enable profile memory with `hermes config set memory.memory_enabled true`, then verify with `hermes memory status`. If the profile uses Mnemosyne, keep its data profile-scoped and do not expose it as a cron toolset.
-- **Another supported provider:** run `hermes memory setup` and let the user choose and authenticate through the provider's own flow.
-
-Do not silently switch from local memory to an external provider. If Mnemosyne is unavailable, report that exact status and offer the supported setup path; do not invent a package name or installation command.
+If Mnemosyne is unavailable on their install, report that exact status and offer the supported setup path (`hermes plugins install mnemosyne` or `hermes setup plugins`); do not invent a package name or installation command.
 
 ### Notes and Obsidian
 
@@ -145,17 +146,17 @@ Ask only about capabilities relevant to the user's goals:
 
 For persistent toolset changes, use `hermes tools` rather than guessing a configuration key. For a one-off session, use the documented `hermes chat --toolsets "web,terminal"` form when appropriate instead of changing the profile.
 
-### Toolset walkthrough — match the reference setup, one toolset at a time
+### Toolset walkthrough — confirm what's on, peel back what they don't need
 
-The goal is a profile that works as smoothly as a fully configured reference setup. Do not stop at "enable web" — walk the user through **every toolset the reference profile ships with**, one at a time, and ask for an explicit yes/no on each. Explain what each does in plain language before asking.
+Every CLI toolset is **already enabled by default** in this profile, so the profile works out of the box the way a fully configured reference setup does. The walkthrough is not an install step — it is a **review**: tell the user everything is already on, then walk each toolset in plain language and ask whether they want to keep it or turn it off. Peel back only what they decline; leave the rest enabled.
 
-First, list what the profile currently has so the user sees the starting point:
+First, show the current state so the user sees that everything is on:
 
 ```bash
 hermes tools
 ```
 
-Then walk this reference set (the CLI toolsets this starter profile pre-enables). For each, say what it's for and ask: "Enable <name>?"
+Then walk the enabled set. For each, say what it's for and ask: "Keep <name> on, or turn it off?" Default to keeping it on if they're unsure.
 
 | Toolset | Plain-language purpose |
 |---|---|
@@ -179,7 +180,7 @@ Then walk this reference set (the CLI toolsets this starter profile pre-enables)
 | `video` | Analyze video files. |
 | `clarify` | Ask the user structured multiple-choice questions mid-task. |
 
-Apply the approved selections through `hermes tools`. Some toolsets only appear there when their dependency is present (an API key, a backend, a driver) — if a toolset the user wants is missing from the list, say so and move to its setup step rather than pretending it is enabled.
+Apply the approved adjustments through `hermes tools` — since everything starts enabled, this usually means turning off only the toolsets the user declined. Some toolsets only appear there when their dependency is present (an API key, a backend, a driver) — if a toolset the user wants is missing from the list, say so and move to its setup step rather than pretending it is enabled.
 
 #### Web search backend (required for `web` to return results)
 

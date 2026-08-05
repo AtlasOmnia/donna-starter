@@ -63,18 +63,21 @@ It covers, in order:
 
 1. **Identity** — what Donna calls you, what you call her, reply style.
 2. **Your main jobs** — research, writing, coding, notes, organization, voice, etc.,
-   so she recommends the smallest sufficient capability set rather than everything.
-3. **Toolset walkthrough** — every CLI toolset, one at a time, in plain language,
-   with an explicit yes/no each: `web`, `browser`, `terminal`, `file`,
-   `code_execution`, `computer_use`, `memory`, `session_search`, `delegation`,
-   `skills`, `cronjob`, `todo`, `kanban`, `image_gen`, `video_gen`, `vision`,
-   `tts`, `video`, `clarify`. Toolsets that need a backend or key are not reported
-   as enabled until that dependency is actually present.
+   so she can point you at the capabilities and integrations that matter to you.
+3. **Toolset review** — every CLI toolset is **already enabled by default**, so the
+   profile works out of the box. Donna walks each one in plain language — `web`,
+   `browser`, `terminal`, `file`, `code_execution`, `computer_use`, `memory`,
+   `session_search`, `delegation`, `skills`, `cronjob`, `todo`, `kanban`,
+   `image_gen`, `video_gen`, `vision`, `tts`, `video`, `clarify` — and you peel
+   back only the ones you don't want. Toolsets that need a backend or key are not
+   reported as working until that dependency is actually present.
 4. **Web search backend** — `web` needs a search provider. Choose self-hosted
    **SearXNG** (private, no key — you supply your own instance URL), a hosted
    search API (Brave / Tavily / Exa), or let `hermes setup` walk the choice.
    Verified with a real query before it's called working.
-5. **Memory** — off, local persistent, or another supported provider.
+5. **Memory** — Donna asks whether you already have a memory provider. If not, she
+   recommends **Mnemosyne** (local-first, profile-scoped, no external account — the
+   provider her memory skills are written around) and sets it up, or uses your own.
 6. **Integrations** — Obsidian, calendar, reminders, email, voice — only the ones
    you pick, each pausing at its own credential/permission gate.
 7. **Token Router (optional)** — offered here; see the next section.
@@ -98,8 +101,17 @@ it manually:
 2. Set `enabled: true` for your profile in `plugins/hermes-token-router/config.yaml`.
 3. Start a fresh session.
 
-Leave it off if you prefer the full tool surface always visible, or if you run a
-model that handles large tool contexts well.
+**It works best alongside a hosted provider API.** Out of the box the router is
+fully deterministic (no network call) and already trims the surface, but its
+optional classifier — which resolves ambiguous requests the deterministic rules
+can't — is designed to run against a cheap hosted model. **OpenRouter** is the
+natural fit: one API key gives you access to many low-cost models for the
+classifier. Any OpenAI-compatible provider or a local endpoint works too. The
+classifier is opt-in (`classifier.enabled` in the plugin config); leave it off to
+stay fully deterministic.
+
+Leave the router off entirely if you prefer the full tool surface always visible,
+or if you run a model that handles large tool contexts well.
 
 ## What's loaded — the skill library
 
