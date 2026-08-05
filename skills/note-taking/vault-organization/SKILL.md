@@ -1,16 +1,47 @@
 ---
 name: vault-organization
-description: vault-organization — Audit, clean up, and reorganize an Obsidian vault — identify bloat, consolidate duplicates, remove empty shells, update MOCs and stale references.
+description: vault-organization — Structure a new Obsidian vault (PARA taxonomy, MOCs, starter folder tree) and audit/clean up/reorganize an existing one — identify bloat, consolidate duplicates, remove empty shells, update MOCs and stale references.
 platforms:
 - macos
 ---
 # Vault Organization
 
-Audit and reorganize the user's Obsidian vault. Run when asked to organize, clean up, or audit the vault structure.
+Audit and reorganize the user's Obsidian vault. Run when asked to organize, clean up, or audit the vault structure — or to set up a sensible structure for a new/empty vault.
 
 ## Vault path
 
 Confirm the actual vault location first — do not assume `~/Documents/Obsidian Vault`. Ask or check Obsidian's settings if the path is not known.
+
+## Structuring a vault (new or from scratch)
+
+When the user asks "how should I organize my vault?" or is starting fresh, recommend a structure before touching anything. Use **PARA** as the default taxonomy — it maps cleanly onto how an assistant actually uses a vault:
+
+- **Projects/** — short-lived efforts with a goal and an end (a trip, a launch, a repair). One folder per project; archive when done.
+- **Areas/** — ongoing responsibilities with no end date (Health, Finance, Home, a business, a role). These persist and get maintained.
+- **Resources/** — reusable reference material not tied to one project: research, guides, templates, snippets, "how I do X."
+- **Archive/** — completed projects and superseded material, kept out of the active tree but searchable.
+
+Conventions that make the vault work for both a human and an agent:
+
+- **MOCs (Maps of Content).** Put an `MOC.md` (or `Index.md`) at each major folder root that links to its key notes. This is the table of contents the agent reads first to navigate. Keep MOCs updated when notes move.
+- **Daily notes** live in their own folder (e.g. `Journal/` or `Daily/`) and are *capture* space, not organization space. Promote anything durable out of a daily note into its PARA home; don't let knowledge rot in dated files.
+- **One canonical home per thing.** A note lives in exactly one place. Link to it from elsewhere rather than duplicating it — duplicates drift.
+- **Names over cleverness.** Plain, predictable folder and note names (`Areas/Health/`, not `02_Health_V2/`). The agent finds things by reading names; make them say what's inside.
+- **Generated artifacts stay out.** The vault stores durable knowledge, not repeatable build/test output (screenshots, renders, Lighthouse runs, backups). Those go under `~/Projects/<project>-artifacts/<date>/` with a pointer note in the vault.
+
+Offer a starter tree and let the user rename/rearrange before creating anything:
+
+```text
+<vault>/
+  Projects/
+  Areas/
+  Resources/
+  Archive/
+  Journal/        # daily notes / capture
+  MOC.md          # top-level map linking the four PARA roots
+```
+
+Create only the folders the user approves, then write a short top-level `MOC.md` that links them.
 
 ## Audit workflow
 

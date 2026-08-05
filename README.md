@@ -149,7 +149,7 @@ the matching task comes up — you do not call them by hand.
 ### Documents & productivity
 - **google-workspace** — Gmail, Calendar, Drive, Docs, Sheets
 - **notion** — Notion via API/CLI
-- **obsidian** / **daily-note-wrapup** / **vault-organization** — notes and vault care
+- **obsidian** / **daily-note-wrapup** / **vault-organization** — notes, vault structure (PARA) & cleanup
 - **office-document-review** — proofread office documents
 - **maps** — geocoding, POIs, routes, timezones
 - **domestic-trip-planning** / **destination-trip-planning** — trip research
