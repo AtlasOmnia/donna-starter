@@ -547,7 +547,7 @@ request pattern to create databases with full property schemas (avoids ntn CLI s
 - **ntn CLI headless auth requires TWO env vars:** `NOTION_API_TOKEN` (the integration key) AND `NOTION_WORKSPACE_ID` (from `/v1/users/me` → `bot.workspace_id`). Without `NOTION_WORKSPACE_ID`, ntn errors with "No workspace selected." Set both:
  ```bash
  export NOTION_API_TOKEN=***
- export NOTION_WORKSPACE_ID=43fdcda6-42dc-4f8b-bd24-443447939eae
+ export NOTION_WORKSPACE_ID=<your-workspace-id>
  ```
 - **Archived data_sources are stuck:** Once a database (data_source) is archived via `PATCH /v1/data_sources/{id}`, it cannot be unarchived through any endpoint — `/v1/pages/`, `/v1/databases/`, and `/v1/data_sources/` all return 400 or 404. Recreate instead of trying to restore.
 - **Bulk archiving hits type mismatches:** When searching for items to archive, database rows appear in search results but their IDs may not resolve on `/v1/pages/` (404) nor on `/v1/data_sources/` (wrong type). The reliable path: collect unique parent database IDs from search results and archive the parent databases — their rows disappear with them.

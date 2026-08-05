@@ -9,7 +9,7 @@ Use when a sanitized/public-ready local Hermes plugin exists, but GitHub already
  - Clone shallow to a temp directory and read the README/manifest so you know whether it is a real release, an overlay snapshot, or stale packaging.
 
 2. Preserve the old state before replacing `main`.
- - Create a branch from current remote `main`, e.g. `legacy-router-overlay-YYYY-MM`.
+ - Create a branch from current remote `main`, e.g. `legacy-overlay-YYYY-MM-DD`.
  - Create a tag, e.g. `legacy-overlay-YYYY-MM-DD`.
  - Push both branch and tag.
 
@@ -30,10 +30,10 @@ Use when a sanitized/public-ready local Hermes plugin exists, but GitHub already
 rm -rf /tmp/hermes-tool-router-remote
 gh repo clone OWNER/REPO /tmp/hermes-tool-router-remote -- --depth 1
 git -C /tmp/hermes-tool-router-remote checkout main
-git -C /tmp/hermes-tool-router-remote branch legacy-router-overlay-2026-05
-git -C /tmp/hermes-tool-router-remote tag legacy-overlay-<date>-28
-git -C /tmp/hermes-tool-router-remote push origin legacy-router-overlay-2026-05
-git -C /tmp/hermes-tool-router-remote push origin legacy-overlay-2026-05-28
+git -C /tmp/hermes-tool-router-remote branch legacy-overlay-YYYY-MM-DD
+git -C /tmp/hermes-tool-router-remote tag legacy-overlay-YYYY-MM-DD
+git -C /tmp/hermes-tool-router-remote push origin legacy-overlay-YYYY-MM-DD
+git -C /tmp/hermes-tool-router-remote push origin legacy-overlay-YYYY-MM-DD
 
 # Replace main with sanitized local tree
 cd /path/to/sanitized-plugin-repo
