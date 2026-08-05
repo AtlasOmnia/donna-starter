@@ -45,7 +45,7 @@ Then:
 ```bash
 hermes setup                  # add your model provider key — or skip if another
                               # Hermes profile already has one (see step 4 below)
-hermes --profile donna chat   # first run — starts the orientation
+hermes --profile donna chat   # start chatting — Donna offers the orientation
 hermes update                 # once: sync the standard Hermes skill library
 ```
 
@@ -55,10 +55,8 @@ skills are tracked as user-modified and are never overwritten.
 
 ## First-run orientation
 
-On the first chat, the `hermes-starter-onboarding` skill offers a guided setup.
-It is a **capability planner, not a blind installer** — it asks, you approve, it
-applies, it verifies. You can also trigger it any time with
-*"help me set up my profile."*
+On your first conversation, Donna offers a guided setup. Say yes (or just ask
+*"help me set up my profile"* any time) to run it.
 
 It covers, in order:
 
