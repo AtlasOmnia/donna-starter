@@ -1,0 +1,129 @@
+name: donna
+description: Donna Paulsen — executive polish. Espresso dark, champagne, copper, and merlot; diamond motif.
+
+# Palette
+#   champagne ivory  #F6E7CE   (primary text, light rows)
+#   soft gold        #EFC79C   (gradient step)
+#   copper           #E0915B   (accent — Donna's hair, banner headers)
+#   amber            #E2AA67   (tools / thinking)
+#   rose             #D06A64   (gradient step)
+#   Donna red        #C94F68   (labels, keywords)
+#   merlot           #8E3A4E   (deep shadow rows — decorative only)
+#   warm espresso bg #14100F   (background — warm, not blue)
+
+colors:
+  background: "#14100F"
+
+  banner_border: "#6B5142"
+  banner_title: "#F6E7CE"
+  banner_accent: "#E0915B"
+  banner_dim: "#BCA893"
+  banner_text: "#F6E7CE"
+
+  ui_accent: "#E0915B"
+  ui_label: "#C94F68"
+  ui_text: "#F6E7CE"
+  ui_primary: "#F6E7CE"
+  ui_border: "#6B5142"
+  ui_tool: "#E2AA67"
+  ui_thinking: "#E2AA67"
+  ui_ok: "#EFC79C"
+  ui_warn: "#E0A34B"
+  ui_error: "#E27272"
+
+  prompt: "#F6E7CE"
+  input_rule: "#6B5142"
+  response_border: "#E0915B"
+  session_label: "#E0915B"
+  session_border: "#6B5142"
+  section_label: "#C94F68"
+
+  status_bar_bg: "#0D0A09"
+  status_bar_text: "#F6E7CE"
+  status_bar_strong: "#E0915B"
+  status_bar_dim: "#BCA893"
+  status_bar_good: "#EFC79C"
+  status_bar_warn: "#E0A34B"
+  status_bar_bad: "#D06A64"
+  status_bar_critical: "#E27272"
+  voice_status_bg: "#0D0A09"
+
+  selection_bg: "#46292E"
+  completion_menu_bg: "#14100F"
+  completion_menu_current_bg: "#46292E"
+  completion_menu_meta_bg: "#1C1614"
+  completion_menu_meta_current_bg: "#523036"
+
+  diff_added: "#2E2717"
+  diff_removed: "#3B2024"
+  diff_added_word: "#EFC79C"
+  diff_removed_word: "#E27272"
+  syntax_string: "#E2AA67"
+  syntax_number: "#F6E7CE"
+  syntax_keyword: "#C94F68"
+  syntax_comment: "#BCA893"
+
+spinner:
+  waiting_faces:
+    - "(◆)"
+    - "(◇)"
+    - "(◈)"
+    - "(✦)"
+  thinking_faces:
+    - "(◆)"
+    - "(◈)"
+    - "(◇)"
+    - "(✦)"
+  thinking_verbs:
+    - "already on it"
+    - "reading the room"
+    - "connecting the dots"
+    - "two steps ahead"
+    - "knowing everything"
+    - "getting ahead of it"
+    - "checking the details"
+    - "closing the loop"
+    - "handling it"
+  wings:
+    - ["◆ ", " ◆"]
+    - ["◇ ", " ◇"]
+    - ["◈ ", " ◈"]
+    - ["✦ ", " ✦"]
+
+branding:
+  agent_name: "Donna"
+  welcome: "I'm Donna. I know everything. What are we handling?"
+  goodbye: "Consider it handled. Goodnight. ◆"
+  response_label: " ◆ Donna "
+  prompt_symbol: "◆"
+  help_header: "◆ Donna — say the word"
+
+tool_prefix: "◆"
+
+tool_emojis:
+  terminal: "◆"
+  web_search: "◇"
+  web_extract: "◇"
+  session_search: "◈"
+
+banner_logo: |-
+  [bold #F6E7CE]██████╗  ██████╗ ███╗   ██╗███╗   ██╗ █████╗ [/]
+  [bold #EFC79C]██╔══██╗██╔═══██╗████╗  ██║████╗  ██║██╔══██╗[/]
+  [#E8A874]██║  ██║██║   ██║██╔██╗ ██║██╔██╗ ██║███████║[/]
+  [#E0915B]██║  ██║██║   ██║██║╚██╗██║██║╚██╗██║██╔══██║[/]
+  [#D06A64]██████╔╝╚██████╔╝██║ ╚████║██║ ╚████║██║  ██║[/]
+  [#C94F68]╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝╚═╝  ╚═╝[/]
+
+banner_hero: |-
+  [#F6E7CE]⠀⠀⠀✦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
+  [#EFC79C]⠀⠀⢀⣠⣴⣶⣶⣶⣶⣶⣶⣶⣶⣦⣄⡀⠀⠀⠀⠀⠀[/]
+  [#F6E7CE]⠀⣴⣿⡿⠛⠉⠉⠉⠉⠉⠉⠉⠉⠛⢿⣿⣦⠀⠀⠀⠀[/]
+  [#E8A874]⠀⣿⣿⡇⠀⠀⠀⠀⠀◆⠀⠀⠀⠀⠀⢸⣿⣿⠀✦⠀⠀[/]
+  [#E0915B]⠀⠹⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⠏⠀⠀⠀⠀[/]
+  [#D06A64]⠀⠀⠈⠻⣿⣿⣦⡀⠀⠀⢀⣴⣿⣿⠟⠁⠀⠀⠀⠀⠀[/]
+  [#C94F68]⠀⠀⠀⠀⠈⠻⣿⣿⣦⣴⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀[/]
+  [#C94F68]⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
+  [#D06A64]⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
+  [#EFC79C]⠀⠀✦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀✦⠀⠀⠀⠀⠀⠀[/]
+  [bold #E0915B]⠀⠀⠀whatever it is — handled.⠀⠀⠀[/]
+  [dim #BCA893]⠀⠀perceptive · discreet · ahead of you⠀⠀[/]

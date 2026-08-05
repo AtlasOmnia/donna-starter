@@ -1,0 +1,42 @@
+global:
+  enabled: false
+  routing_scope: first_turn
+  expansion_mode: monotonic
+  shrink_mid_session: false
+  floor_toolsets: []
+  deterministic_rules_enabled: true
+  confidence_threshold: 0.9
+  router_timeout_ms: 750
+  router_hard_timeout_ms: 1200
+  fail_open: true
+  auto_recover_registered_tools: true
+  classifier:
+    enabled: false
+    provider: null
+    model: null
+    base_url: null
+    api_key_env: null
+  metrics:
+    enabled: true
+    local_only: true
+    retain_days: 30
+profiles:
+  donna:
+    # Router is DISABLED by default. To enable: flip this to true
+    # (and add hermes-token-router back to plugins.enabled in config.yaml).
+    enabled: false
+    routing_scope: first_turn
+    expansion_mode: monotonic
+    shrink_mid_session: false
+    floor_toolsets: []
+    deterministic_rules_enabled: true
+    confidence_threshold: 0.9
+    router_hard_timeout_ms: 2000
+    fail_open: true
+    auto_recover_registered_tools: true
+    classifier:
+      enabled: false
+      provider: null
+      model: null
+      base_url: null
+      api_key_env: null

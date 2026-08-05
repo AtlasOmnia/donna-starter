@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[[DOCUMENT TITLE]]</title>
+  <style>
+    :root {
+      --canvas-w: 1080px;
+      --canvas-h: 1350px;
+      --ink: #14211d;
+      --paper: #f4f0e7;
+      --accent: #d78c43;
+      --accent-dark: #9f5724;
+      --muted: #53625c;
+      --line: rgba(20, 33, 29, .18);
+      --pad: 76px;
+      --radius: 28px;
+      --display: Georgia, "Times New Roman", serif;
+      --body: "Avenir Next", Avenir, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: var(--canvas-w); height: var(--canvas-h); overflow: hidden; }
+    body { background: #d7d1c5; color: var(--ink); font-family: var(--body); }
+
+    .canvas {
+      position: relative;
+      width: var(--canvas-w);
+      height: var(--canvas-h);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 93% 8%, rgba(215,140,67,.22), transparent 24%),
+        var(--paper);
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 1.04fr .96fr;
+      gap: 44px;
+      padding: var(--pad) var(--pad) 44px;
+    }
+
+    .copy { display: flex; flex-direction: column; min-width: 0; }
+    .brand {
+      margin-bottom: 116px;
+      font-size: 20px;
+      font-weight: 750;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow { color: var(--accent-dark); font-size: 19px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 20px 0 22px; font: 400 94px/.92 var(--display); letter-spacing: -.045em; text-wrap: balance; }
+    .lead { margin: 0; max-width: 470px; color: var(--muted); font-size: 27px; line-height: 1.35; }
+
+    .action { margin-top: 72px; }
+    .cta { display: inline-block; background: var(--ink); color: white; padding: 21px 28px 19px; border-radius: 999px; font-size: 20px; font-weight: 700; letter-spacing: .01em; }
+    .contact { margin-top: 20px; font-size: 19px; line-height: 1.5; }
+
+    .visual { position: relative; display: flex; align-items: stretch; min-width: 0; }
+    .photo {
+      position: relative;
+      width: 100%;
+      border-radius: 180px 180px var(--radius) var(--radius);
+      overflow: hidden;
+      background:
+        linear-gradient(155deg, rgba(20,33,29,.05), rgba(20,33,29,.22)),
+        linear-gradient(135deg, #b9c8c0, #536b62 65%, #20352e);
+      box-shadow: 0 30px 70px rgba(20,33,29,.18);
+    }
+    .photo::before {
+      content: "[[IMAGE AREA]]";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,.72);
+      font-size: 18px;
+      letter-spacing: .16em;
+    }
+    .badge {
+      position: absolute;
+      left: 28px;
+      bottom: 28px;
+      max-width: calc(100% - 56px);
+      padding: 14px 18px 12px;
+      border-radius: 12px;
+      background: rgba(244, 240, 231, .94);
+      color: var(--ink);
+      text-align: left;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      margin: 0 var(--pad) 58px;
+      padding-top: 27px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+    .proof strong { display: block; font-size: 19px; margin-bottom: 6px; }
+    .proof span { color: var(--muted); font-size: 16px; line-height: 1.38; }
+
+    /* Social-canvas default. Replace with the verified trim size for print work. */
+    @page { size: 1080px 1350px; margin: 0; }
+    @media print {
+      * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <main class="canvas" data-artboard aria-label="[[CAMPAIGN]] promotional flyer">
+    <section class="main">
+      <div class="copy">
+        <div class="brand">[[BRAND OR LOGO ASSET]]</div>
+        <div class="eyebrow">[[EYEBROW]]</div>
+        <h1>[[HEADLINE]]</h1>
+        <p class="lead">[[SUPPORTING COPY]]</p>
+        <div class="action">
+          <div class="cta">[[CALL TO ACTION]]</div>
+          <div class="contact">[[PHONE]]<br>[[WEBSITE]]</div>
+        </div>
+      </div>
+      <div class="visual">
+        <div class="photo" role="img" aria-label="[[IMAGE DESCRIPTION]]"></div>
+        <div class="badge">[[BADGE COPY]]</div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="proof"><strong>[[PROOF 1]]</strong><span>[[PROOF DETAIL 1]]</span></div>
+      <div class="proof"><strong>[[PROOF 2]]</strong><span>[[PROOF DETAIL 2]]</span></div>
+      <div class="proof"><strong>[[PROOF 3]]</strong><span>[[PROOF DETAIL 3]]</span></div>
+    </footer>
+  </main>
+</body>
+</html>

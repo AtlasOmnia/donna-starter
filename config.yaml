@@ -1,0 +1,105 @@
+# Donna Starter profile — clean template. No credentials included.
+# After install, run `hermes setup` to add your own provider keys,
+# or set model.default / model.provider below (see README.md).
+_config_version: 33
+model:
+  default: deepseek-v4-flash
+  provider: deepseek
+fallback_providers:
+- provider: deepseek
+  model: deepseek-v4-flash
+compression:
+  enabled: true
+  threshold: 0.85
+  target_ratio: 0.7
+  protect_last_n: 50
+  protect_first_n: 3
+  abort_on_summary_failure: false
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  write_approval: true
+  memory_char_limit: 1100
+  user_char_limit: 700
+  provider: mnemosyne
+onboarding:
+  profile_build: ask
+  seen: {}
+toolsets:
+- hermes-cli-core
+platform_toolsets:
+  cli:
+  - browser
+  - clarify
+  - code_execution
+  - computer_use
+  - cronjob
+  - delegation
+  - file
+  - image_gen
+  - kanban
+  - memory
+  - session_search
+  - skills
+  - terminal
+  - todo
+  - tts
+  - video
+  - video_gen
+  - vision
+  - web
+platforms:
+  api_server:
+    enabled: false
+  telegram:
+    enabled: false
+  bluebubbles:
+    enabled: false
+agent:
+  max_turns: 60
+  api_max_retries: 3
+  service_tier: fast
+  tool_use_enforcement: auto
+  task_completion_guidance: true
+  parallel_tool_call_guidance: true
+  environment_probe: true
+  coding_context: auto
+  reasoning_effort: high
+display:
+  compact: true
+  skin: donna
+  show_reasoning: false
+  streaming: true
+  timestamps: false
+  persistent_output: true
+  persist_prompts: true
+  file_mutation_verifier: true
+  language: en
+  tool_progress: new
+approvals:
+  mode: manual
+  timeout: 60
+  cron_mode: deny
+skills:
+  template_vars: true
+  inline_shell: false
+  guard_agent_created: true
+  write_approval: true
+plugins:
+  enabled: []
+  disabled: []
+  entries: {}
+security:
+  allow_private_urls: false
+  redact_secrets: true
+  website_blocklist:
+    enabled: false
+    domains: []
+privacy:
+  redact_pii: true
+logging:
+  level: INFO
+  max_size_mb: 5
+  backup_count: 3
+  memory_monitor:
+    enabled: true

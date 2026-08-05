@@ -1,0 +1,11 @@
+# Protect credentials and local state if this profile is versioned.
+.env
+.env.*
+!.env.example
+*.log
+state.db*
+projects.db*
+sessions/
+__pycache__/
+*.pyc
+.DS_Store
