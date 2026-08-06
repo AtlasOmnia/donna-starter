@@ -23,7 +23,7 @@ memory:
   user_char_limit: 700
   provider: mnemosyne
 onboarding:
-  profile_build: ask
+  profile_build: none
   seen: {}
 toolsets:
 - hermes-cli-core

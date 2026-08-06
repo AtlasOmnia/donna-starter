@@ -81,6 +81,8 @@ Report the starting state briefly. Do not dump credentials, full environment fil
 
 Use this order, adapting to answers already given.
 
+**Do not stop after the identity answers.** Work through every group below in one continuous pass — Identity → Main jobs → Memory → Notes → Capability boundaries → Toolset walkthrough — feeding each answer into the next. Do not pause to ask "should I continue?" and do not wrap up after the first couple of answers. The setup plan comes at the end (Phase 2), not after the first question group. Completing only the identity questions is an abandoned onboarding, not a finished one.
+
 ### Identity
 
 Ask:
