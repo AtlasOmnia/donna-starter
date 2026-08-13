@@ -229,15 +229,12 @@ Typical blocking evidence patterns:
 - When types that represent authentication scopes or resource access (`CredentialKind`, `PermissionScope`, `Role`) appear on both sides of a trust boundary, verify they define exactly the same set of values. A drift that omits a kind from the renderer side means the renderer can never request that kind — confusing but not a vulnerability. A drift that includes extra kinds on the renderer side means the renderer can request access that the backend does not recognize as valid — silent auth bypass.
 
 ## Support files
-- `references/quality-security-rereview.md` — independent rereview: verify prior code-review findings (F-001 through F-004) against a new commit with finding-by-finding disposition, TOCTOU/ACL/canonical-key/active-plugin checklists, edge-case matrix, and verdict format.
 - `references/privacy-safe-support-reports.md` — exact allowlisted diagnostic schemas, code-only recording, payload-free privileged IPC, atomic export, consent/disclosure rules, adversarial tests, and bounded reviewer recovery.
 - `references/hermes-office-review.md` — example review notes for an Office add-in that proxies to a full Hermes agent.
 - `references/profile-bound-ai-desktop-review.md` — legacy IPC authority, canonical AI-profile binding, provenance persistence, secure-storage edge cases, and deletion-derived state.
-- `references/ios-commercial-product-readiness.md` — end-to-end SwiftUI/App Store productization review workflow for realtime voice and AI apps.
+
 ## Public support files
 
 - `references/hermes-office-review.md`
-- `references/ios-commercial-product-readiness.md`
 - `references/privacy-safe-support-reports.md`
 - `references/profile-bound-ai-desktop-review.md`
-- `references/quality-security-rereview.md`
