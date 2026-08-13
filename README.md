@@ -10,7 +10,7 @@ orientation walks you through enabling exactly the capabilities you want.
 She ships with:
 
 - **A persona** — sharp, discreet, outcome-focused executive assistant (see `SOUL.md`).
-- **73 curated skills** — Hermes configuration, plugin development, research,
+- **72 curated skills** — Hermes configuration, plugin development, research,
   documents, GitHub workflows, Reddit, trip planning, local models, and more
   (full list below).
 - **A guided first-run orientation** — the `hermes-starter-onboarding` skill asks
@@ -120,7 +120,7 @@ or if you run a model that handles large tool contexts well.
 
 ## What's loaded — the skill library
 
-73 skills, organized by category. Each is a reusable procedure Donna loads when
+72 skills, organized by category. Each is a reusable procedure Donna loads when
 the matching task comes up — you do not call them by hand.
 
 ### Getting the most out of Hermes
@@ -131,7 +131,6 @@ the matching task comes up — you do not call them by hand.
 - **hermes-session-maintenance** — manage session history and storage
 - **hermes-self-evaluation** — audit and optimize your own setup
 - **hermes-overnight-autonomy** — unattended continuity and watchdogs
-- **hermes-autoresearch-loops** — self-improving research loops
 - **hermes-plugin-development** / **hermes-plugin-evaluation** / **hermes-desktop-plugins** — build and vet plugins
 - **hermes-themes** — author color themes
 - **hermes-mnemosyne** / **mnemosyne-maintenance** — the memory provider
