@@ -79,4 +79,7 @@ For Reddit/X/forum use:
 3. Sentence 3: state what it does not support.
 4. Sentence 4+: tie back to the concrete artifact under debate.
 
-- — session-derived example of correcting a paper-based overclaim in a SOUL.md / persona-file debate.
+- `references/research-overclaim-patterns.md` — session-derived example of correcting a paper-based overclaim in a SOUL.md / persona-file debate.
+## Public support files
+
+- `references/research-overclaim-patterns.md`

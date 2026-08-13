@@ -420,3 +420,18 @@ For the Telegram-specific recovery recipe, official command behavior, and the ve
 - `references/snapcompact-hermes-boot-analysis.md` — session-derived notes on applying Snapcompact to Hermes startup payloads and realistic savings estimates.
 - `references/jinja-chat-template-audit.md` — 7-point audit checklist for custom Jinja chat-templates with test harness pattern.
 - `references/profile-data-accuracy.md` — why vague user profile labels (\"20 years HK experience\") cause downstream model hallucination, and the rule for fixing them.
+## Public support files
+
+- `references/compression-runtime-fallback-notes.md`
+- `references/context-overflow-recovery.md`
+- `references/gateway-voice-latency-attribution.md`
+- `references/goal-long-prompt-preservation.md`
+- `references/isolated-worker-state-store.md`
+- `references/jinja-chat-template-audit.md`
+- `references/native-context-inspection.md`
+- `references/profile-data-accuracy.md`
+- `references/prompt-composition-baseline.md`
+- `references/session-store-optimization.md`
+- `references/skill-pruning-workflow.md`
+- `references/snapcompact-hermes-boot-analysis.md`
+- `references/tool-router-architecture.md`

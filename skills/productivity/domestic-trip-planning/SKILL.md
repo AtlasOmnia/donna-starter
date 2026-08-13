@@ -138,8 +138,13 @@ For family/group trips during Christmas or New Year's week:
 - **Elvis Week / special events.** Major attractions have peak-event weeks (e.g. Graceland: August 8-16 for Elvis Week). If the user wants to avoid crowds, flag these. If they're a superfan, offer it as an option.
 - **Ticket tier confusion.** Don't assume the user knows what each ticket tier includes. When presenting pricing, add one line per tier explaining what's covered. Example: "$85 standard ticket = mansion tour + exhibit complex + airplanes, ~3.5-4 hrs". This prevents "the house is the museum right?" questions.
 
-- — specific fallback strategies for when web_extract fails on JS-heavy travel/booking sites
-- — IHG.com-specific extraction technique: full snapshots, TreeWalker JS pattern, pitfalls (vision hallucination, lazy loading, sort params)
-- — exact-date, group-size airfare workflow using live booking results, with CDP fallback selectors and fare-reporting rules
-- — DOT/BTS city-pair queries, historical-fare interpretation, and the live-vs-quarterly comparison template
-- — the session-specific Graceland research that informed this skill's development
+- `references/web-extract-fallback-strategies.md` — specific fallback strategies for when web_extract fails on JS-heavy travel/booking sites.
+- `references/ihg-hotel-scraping.md` — IHG.com-specific extraction technique: full snapshots, TreeWalker JS pattern, pitfalls (vision hallucination, lazy loading, sort params).
+- `references/live-flight-pricing.md` — exact-date, group-size airfare workflow using live booking results, with CDP fallback selectors and fare-reporting rules.
+- `references/historical-airfare-benchmarks.md` — DOT/BTS city-pair queries, historical-fare interpretation, and the live-vs-quarterly comparison template.
+## Public support files
+
+- `references/historical-airfare-benchmarks.md`
+- `references/ihg-hotel-scraping.md`
+- `references/live-flight-pricing.md`
+- `references/web-extract-fallback-strategies.md`

@@ -131,7 +131,13 @@ const rect = el.getBoundingClientRect();
 
 This snippet confirms state; it does not replace visual inspection.
 
-- — focused diagnosis and repair pattern for clipped descenders in gradient display text.
-- — contract-first repair for awkward semantic-hyphen wrapping plus native-Safari open/closed screenshot-state acceptance.
-- — bounded desktop hero resizing from a real-browser acceptance signal, with RED contract, cache marker, five-width QA, and visible-tab refresh.
-- — user-driven conversion from asymmetric editorial spans to equal card rows, with RED contract, cache-busting, cross-browser QA, and local-Git closeout.
+- `references/gradient-text-descenders.md` — focused diagnosis and repair pattern for clipped descenders in gradient display text.
+- `references/responsive-heading-wrap-and-ui-state.md` — contract-first repair for awkward semantic-hyphen wrapping plus native-Safari open/closed screenshot-state acceptance.
+- `references/desktop-hero-scale-calibration.md` — bounded desktop hero resizing from a real-browser acceptance signal, with RED contract, cache marker, five-width QA, and visible-tab refresh.
+- `references/responsive-product-card-grid-parity.md` — user-driven conversion from asymmetric editorial spans to equal card rows, with RED contract, cache-busting, cross-browser QA, and local-Git closeout.
+## Public support files
+
+- `references/desktop-hero-scale-calibration.md`
+- `references/gradient-text-descenders.md`
+- `references/responsive-heading-wrap-and-ui-state.md`
+- `references/responsive-product-card-grid-parity.md`

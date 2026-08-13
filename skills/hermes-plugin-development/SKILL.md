@@ -366,3 +366,23 @@ Repo replacement workflow: `references/public-plugin-repo-replacement.md`.
 
 - Example: hermes-token-router plugin (~/.hermes/plugins/hermes-token-router)
  - Shows per-profile config gating, toolset prediction, recall fallback, and safe degradation.
+## Public support files
+
+- `references/api-server-live-plugin-contract.md`
+- `references/cross-platform-prefetch-publication.md`
+- `references/desktop-model-picker-plugin.md`
+- `references/external-model-gateway-affinity.md`
+- `references/fail-closed-policy-plugin-deployment.md`
+- `references/gmail-oauth-handoff.md`
+- `references/hook-contextvar-lifecycle.md`
+- `references/least-privilege-workspace-oauth.md`
+- `references/long-goal-public-prep-handoff.md`
+- `references/modelx-branch-drift-triage.md`
+- `references/multiplex-profile-guarded-prefetch.md`
+- `references/public-plugin-distribution-checklist.md`
+- `references/public-plugin-repo-replacement.md`
+- `references/router-model-latency.md`
+- `references/runtime-hook-composition-regression.md`
+- `references/self-gated-policy-plugin-deployment.md`
+- `references/tool-router-production-hardening.md`
+- `references/tui-model-picker-slash-command.md`

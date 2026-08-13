@@ -263,3 +263,7 @@ Use this exact format:
 - For bulk hygiene runs, trust only the post-fix rescan. If the checker itself was missing or stale, repair that helper first, rerun the audit, and use the new report as the source of truth.
 - When normalizing weak openers, strip accidental file-name prefixes before prepending the skill name, and leave already-valid descriptions alone. A fix that compounds a bad prefix is worse than the original smell.
 - After deleting snapshot caches or regenerating generated indexes, verify the file state explicitly instead of assuming the command did it.
+## Public support files
+
+- `references/ad-hoc-skill-verification.md`
+- `references/public-skill-package-release-gate.md`

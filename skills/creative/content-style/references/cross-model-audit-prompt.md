@@ -77,7 +77,7 @@ Run with `background=true` and `notify_on_complete=true` so you can keep working
 
 - If the audit delegate times out or returns nothing, run the factual audit inline against the agent transcript instead, and note the fallback.
 - Keep the two-review principle when a second model is reachable, but treat it as best-effort.
-- **Use a paid aggregator (e.g. OpenRouter) ONLY when the user explicitly authorizes it for that task.** Otherwise stay on the default direct-provider routes.
+- Use only the provider and authentication route already configured for the current Hermes installation. Do not add credential-reading or provider-switching recipes to a public skill.
 - When authorized, split the audit by cost: an expensive critic for tone/SEO/optics, a cheap model for mechanical link/reference checks.
 - Credential policy: never read `.env` or connected-account files directly; rely on the configured provider routes.
 

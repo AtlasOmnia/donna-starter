@@ -91,7 +91,6 @@ Before closing the task, confirm:
 
 ## Session note file
 
-- — path-discovery, OneDrive folder verification, and enumeration fallback patterns.
 
 ## Practical notes
 
@@ -104,6 +103,5 @@ Before closing the task, confirm:
 
 ## Session reference
 
-- — OneDrive recursion fallback, deadlock symptom, and the parent-`find` workaround used in practice.
 
 - When the user asks for "edits needed," separate true spelling/grammar fixes from OCR or extraction artifacts and label each file accordingly.

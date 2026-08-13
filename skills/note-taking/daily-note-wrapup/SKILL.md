@@ -53,3 +53,6 @@ Use this skill for evening wrap-up work that creates tomorrow's daily note and u
 
 ## Support files
 - `scripts/atomic-note-replace-verify.sh` — reusable macOS atomic replacement with cleanup traps and 30-second locked plus 20-second unlocked SHA-256 stability checks.
+## Public support files
+
+- `scripts/atomic-note-replace-verify.sh`

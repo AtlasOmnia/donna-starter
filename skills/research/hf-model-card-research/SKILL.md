@@ -184,5 +184,3 @@ When the user wants a comparison, produce a summary table at the end grouping:
 - **Some repos ship MTP heads as separate tensors** — check `siblings` for `mtp`-related filenames.
 - **Refusal-rate tests use different methodologies** (100-prompt, 465-prompt). Note the test size when comparing.
 - **"0 downloads" can happen** on newly-published repos with Xet-based storage that doesn't track downloads the same way.
-
-- — session transcript of a pull across 16 author groups, HF API endpoints used, README extraction patterns, and specific pitfalls encountered.

@@ -145,3 +145,6 @@ enumerate.
  YAML with the intended `name` and `colors`.
 - Run `hermes config get display.skin` and confirm it reports `<name>`.
 - The repaint lands as this turn ends — ask the user to confirm the new look.
+## Public support files
+
+- `templates/skin.yaml`

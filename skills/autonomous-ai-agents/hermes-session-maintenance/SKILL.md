@@ -201,3 +201,8 @@ See also: `references/session-forensics-token-burn.md`.
 
 - `references/session-pruning-retention.md` — condensed notes from the session where 30-day auto-prune was evaluated against a 6.7GB session DB.
 - `references/session-forensics-token-burn.md` — diagnosing whether a session burned tokens because of duplicate delivery, internal tool cascades, or oversized tool payloads.
+## Public support files
+
+- `references/session-forensics-token-burn.md`
+- `references/session-pruning-retention.md`
+- `references/source-specific-retention-and-cli-clear.md`

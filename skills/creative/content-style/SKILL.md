@@ -380,7 +380,7 @@ The free tier on OpenRouter contracts monthly. Models the prior month's post lis
 
 **Rule:** Never trust the OpenRouter collection page or the previous post's model list. Verify against the **live API** before writing any "free" claim.
 
-See `references/openrouter-free-tier-verification.md` for the exact API call.
+Verify current model availability from the provider's documented, authenticated interface before making a free-tier claim; do not copy private credential or shell-loading recipes into a public skill.
 
 **Pitfall: critic hallucination on availability.** Both cross-model audit passes can invent model-availability claims — e.g., "Qwen3 Coder 480B is now free", "Elephant Alpha is free", or specific "going away July X" banner dates. These are frequently FALSE against the live API. Re-verify EVERY availability claim a critic makes against the API before applying the fix.
 
@@ -437,23 +437,9 @@ This avoids API keys entirely — OAuth is handled by `hermes auth status nous`.
 
 See `references/nous-portal-critic-workflow.md` for the full workflow.
 
-**When to use OpenRouter instead:** If you need Claude Sonnet 4/4.5/4.6/5 specifically (not Fable), use OpenRouter. See `references/openrouter-critic-workflow.md`.
+**When to use another configured critic provider instead:** If you need a model unavailable through the configured Hermes Portal route, use the provider documented by the current Hermes installation. Do not embed provider credentials or credential-reading recipes in a public skill.
 
-**Fable is available on both providers (verified):** The model-catalog.json now lists `anthropic/claude-fable-5` under BOTH the `openrouter` and `nous` providers. Earlier sessions hit a 404 using a stale ID (`anthropic/claude-3.5-sonnet`) — Sonnet 3.5 is no longer on OpenRouter. Before retrying a critic call that 404'd, verify the model ID against the live catalog:
-
-```bash
-curl -s https://hermes-agent.nousresearch.com/docs/api/model-catalog.json | python3 -c "
-import json,sys
-cat = json.load(sys.stdin)
-for provider in ('openrouter','nous'):
- print(f'--- {provider} ---')
- for m in cat['providers'][provider]['models']:
- if 'fable' in m['id'].lower():
- print(' ', m['id'])
-"
-```
-
-Then use the exact listed ID. Both Nous Portal (OAuth, no key needed) and OpenRouter work for Fable 5. For the Sonnet family, continue using OpenRouter.
+Use the exact model identifier reported by the currently configured Hermes provider. Verify availability through that provider’s documented interface before starting the critic pass. Keep provider authentication outside this public skill.
 
 **Recommended sequence for model-variant megathreads:**
 
@@ -530,3 +516,17 @@ curl -s "https://huggingface.co/api/models?author=<owner>&search=<fragment>&limi
 ```
 
 Then `curl -sI` the canonical URL to confirm 200 before embedding it in a megathread. Run this on every HF URL in a link audit, even ones written by hand. HF repo-id names are easy to misremember; prefix/suffix/`-GGUF` suffixes all matter.
+## Public support files
+
+- `references/beginner-setup-guide-format.md`
+- `references/community-aggregated-megathread-format.md`
+- `references/compliance-to-readable-patterns.md`
+- `references/cross-model-audit-prompt.md`
+- `references/definitive-guide-format.md`
+- `references/definitive-guide-reviews-section.md`
+- `references/hermes-instruction-compliance-memory.md`
+- `references/huggingface-card-benchmark-verification.md`
+- `references/mac-mlx-research-data.md`
+- `references/nous-portal-critic-workflow.md`
+- `references/publication-artifact-critic-sequencing.md`
+- `references/reddit-megathread-polish-workflow.md`

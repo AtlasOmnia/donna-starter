@@ -200,3 +200,8 @@ Tell the user:
 - `references/analyst-prompt-template.md` — the full structured analyst prompt template used as the base for composing evaluation prompts. Update this when the Hermes session schema or architecture changes meaningfully.
 - `references/runaway-session-diagnostics.md` — SQL/Python snippets and interpretation notes for diagnosing a specific runaway/restored session, repeated tool-call IDs, compaction contamination, and stop/steer handling.
 - `references/evidence-first-self-check-validation.md` — class-level rubric and exact checks for validating session, memory, retention, delivery, plugin-rollout, and CLI-syntax findings before implementing self-check recommendations.
+## Public support files
+
+- `references/analyst-prompt-template.md`
+- `references/evidence-first-self-check-validation.md`
+- `references/runaway-session-diagnostics.md`

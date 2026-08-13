@@ -5,7 +5,7 @@ Alternative critic path using Nous Portal OAuth + `hermes chat` CLI. Preferred w
 ## When to Use
 
 - User explicitly asks for Fable (Claude Fable 5)
-- OpenRouter returns 404 for `anthropic/claude-fable-5` (it does — use Sonnet 4/4.5/4.6/5 on OpenRouter instead, see `openrouter-critic-workflow.md`)
+- The requested model is unavailable through the configured Hermes Portal route
 - OAuth is already configured (`hermes auth status nous` shows "logged in")
 
 ## Command
@@ -51,7 +51,7 @@ PROMPT
 
 ## Authentication
 
-Requires `hermes auth status nous` to show "logged in." If not, run `hermes auth add nous` and complete the OAuth device flow.
+Requires an already authenticated Hermes Portal session. Do not read, print, or embed credential files or API keys in a public skill. If authentication is missing, stop and use the user's normal Hermes authentication flow.
 
 ## Example: Qwen 3.6 Megathread Critique
 
@@ -85,14 +85,14 @@ PROMPT
 
 ## Post-Critique Verification (mandatory)
 
-Follow the same verification steps as `openrouter-critic-workflow.md`:
+Follow the same verification steps as the provider-neutral critic workflow:
 - Separate grounded findings from hallucinated ones
 - Verify benchmark claims against primary sources (HuggingFace model cards, Reddit threads, live APIs)
 - Apply only grounded fixes, document skipped fixes with reasons
 
 ## Common Critic Hallucination Patterns
 
-Same as OpenRouter workflow:
+Provider-neutral critic checks:
 - Benchmark regression claims (verify the number is in the card and the comparison base is correct)
 - KL divergence numbers (verify against model card — llmfan46 Heretic v2 = 0.0021, DavidAU Heretic = 0.0469)
 - Model IDs that don't exist

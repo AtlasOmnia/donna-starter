@@ -66,5 +66,3 @@ When the user authorizes implementation or the applicator must be repaired:
 - Applicators may contain archive-first fallbacks that silently skip a refreshed root artifact while exiting 0. When refreshing a patch, inspect branch precedence, make the root artifact win when present, and verify both a real apply and a second idempotent run.
 
 ## Reference
-
-- — worked example: a scoped model-picker patch vs. a drifting HEAD (private branches, per-file apply map, drift causes, concurrent-implementation snapshot).

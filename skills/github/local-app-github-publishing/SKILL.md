@@ -270,6 +270,11 @@ When the user explicitly authorizes deleting a GitHub repository, treat retireme
 - Do not promise public availability if the repo was created private.
 - Do not conflate source-patch recovery with deployed-binary recovery. A post-update Git hook may reapply source changes successfully while leaving an installed Electron/macOS/Windows application on the old build; inspect and document the rebuild/reinstall path separately.
 
-- — condensed checklist and command transcript pattern from a successful Electron+iOS translator app first push.
-- — package a verified upstream repair as a small private patch repo with an idempotent worktree-safe apply script, artifact-integrity checks, and local macOS packaging gates.
+- `references/local-app-first-push.md` — condensed checklist and command transcript pattern from a successful Electron+iOS translator app first push.
+- `references/private-upstream-patch-repository.md` — package a verified upstream repair as a small private patch repo with an idempotent worktree-safe apply script, artifact-integrity checks, and local macOS packaging gates.
 - `templates/idempotent-git-patch-apply.sh` — starter installer for fail-closed, worktree-safe, idempotent patch application.
+## Public support files
+
+- `references/local-app-first-push.md`
+- `references/private-upstream-patch-repository.md`
+- `templates/idempotent-git-patch-apply.sh`

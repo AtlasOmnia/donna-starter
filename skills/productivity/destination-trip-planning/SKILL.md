@@ -159,5 +159,3 @@ After pricing is finalized, deliver a **one-table budget estimate**:
 - State the exact dates and nights in the budget heading; do not reuse an earlier duration after the user corrects it
 - Label which numbers are verified vs. estimates
 - Include a suggested date range (midweek preferred, event dates to avoid)
-
-- — Elvis/Graceland-specific research: pricing, packages, attractions list, tips for a 70-year-old traveler

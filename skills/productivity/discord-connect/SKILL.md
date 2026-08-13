@@ -191,14 +191,6 @@ For `/voice join` / `/voice channel` to speak in Discord voice channels on macOS
 
 ## Reference Files
 
-- — step-by-step setup flow with gotchas captured from sessions.
-- — what to check when the bot is in the server but Hermes still discovers zero Discord channels.
-- — inspect and switch Discord voice replies between cloud TTS and local Piper/KittenTTS/NeuTTS providers.
-- — API checks and fixes for Code Grant, guild install, channel discovery, and ✅-only unauthorized responses.
-- — API probes and portal flow for `integration requires code grant`, bot-not-installed, final hCaptcha, and post-install Hermes verification.
-- — diagnose the common case where the token is valid and the bot connects, but Discord API reports `guild_count 0`, meaning the bot has not been installed into any server.
-- — end-to-end Discord voice setup/debugging: `/voice join`, ffmpeg/Opus, voice doctor, wrong-channel joins, and log verification.
-- — move a Discord bot token from the default profile to a specialized profile, avoid token-owner conflicts, and verify the new profile gateway.
 
 ## See Also
 

@@ -73,3 +73,8 @@ Use this when Hermes messaging platforms are installed/configured but messages d
 - If Telegram is fast for text but a photo/image turn appears to run forever, inspect `agent.log` for repeated API calls ending in `TypeError: expected string or bytes-like object, got 'list'` from `_interim_assistant_visible_text` → `strip_think_blocks`. This was a multimodal block-list regression introduced by Codex interim-commentary handling; a current upstream release fixes the loop. Stop the affected turn, update Hermes through the normal update-safe procedure, reapply local patches, restart the gateway, and verify with a real photo+caption message. Transport latency and gateway health can look completely normal while this retry loop burns up to the agent iteration cap.
 - Do not persist negative claims like “BlueBubbles ignores self messages” as a permanent tool limitation. The durable lesson is the loop-guard design.
 - Do not edit protected bundled skills; place Hermes-gateway-specific operational learnings here when bundled skills cannot be patched.
+## Public support files
+
+- `references/bluebubbles-self-imessage-loop-guard.md`
+- `references/memory-context-injection-probes.md`
+- `references/telegram-forum-session-scope.md`

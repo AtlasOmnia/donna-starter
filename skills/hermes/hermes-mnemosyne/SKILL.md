@@ -235,3 +235,9 @@ cfg=yaml.safe_load((pathlib.Path.home()/'.hermes/config.yaml').read_text()) or {
 print(json.dumps(cfg.get('memory'), indent=2))
 PY
 ```
+## Public support files
+
+- `references/memory-stack-migration-pilot.md`
+- `references/memory-tool-selection-mem0-vs-mnemosyne.md`
+- `references/mnemosyne-architecture.md`
+- `references/profile-safe-manual-consolidation.md`

@@ -544,3 +544,24 @@ See `references/prefill-optimization-notes.md` for benchmark data and tuning rec
 - `references/shared-local-worker-compressor.md` — one-checkpoint architecture for parallel local workers plus compression, including trigger/middle math, conservative-guard workaround, dotted model-ID pitfall, and live verification
 - `references/single-gpu-long-context-compression.md` — exact Qwen3.6-27B NVFP4-Q8 compressor choice for one 32GB GPU, 262K Q8-KV memory math, stable load preset, fallback, concurrency, and dual-5090 buying gates
 - `references/prefill-optimization-notes.md` — benchmark data, ubatch tuning recipes, LM Studio config mapping, and upcoming prefill features (chunked prefill, MTP speculative decoding)
+## Public support files
+
+- `references/16gb-vram-recommendations.md`
+- `references/cloud-orchestrated-q4-delegates.md`
+- `references/dense-vs-moe-qwen36-comparison.md`
+- `references/hermes-compression-window-matching.md`
+- `references/hermes-local-routing-verification.md`
+- `references/jinja-template-patches.md`
+- `references/lm-studio-engine-protocol-threading.md`
+- `references/lm-studio-model-storage-operations.md`
+- `references/local-compression-economics.md`
+- `references/local-document-ocr-models.md`
+- `references/mac-megathread-research.md`
+- `references/mac-model-research.md`
+- `references/macos-ollama-storage-and-uninstall.md`
+- `references/prefill-optimization-notes.md`
+- `references/qwen-agentworld-field-notes.md`
+- `references/qwen-family-size-map.md`
+- `references/reap-pruned-models.md`
+- `references/shared-local-worker-compressor.md`
+- `references/single-gpu-long-context-compression.md`

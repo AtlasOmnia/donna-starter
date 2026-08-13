@@ -146,5 +146,3 @@ Avoid saying “it should run.” Say either “it is loaded and tested” or st
 - Do not print credentials or auth files.
 - Do not treat collected social posts as verified facts; mark the digest as collection-only.
 - When a terminal command exits non-zero because a final diagnostic command was missing or shell-specific, inspect the useful output first. If service status and logs show success, do not over-correct a working scheduler.
-
-- — concrete Hermes Agent collector pattern and launchd verification notes from a working setup.

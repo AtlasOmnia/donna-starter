@@ -185,3 +185,7 @@ Dataless placeholders usually consume negligible local data blocks; deleting the
 
 - See `scripts/archive-resident-files.py` for a generic fail-closed resident-file archiver with SHA-256 destination verification.
 - See `scripts/cleanup-inactive-caches.py` for a dry-run-first cache cleaner that skips targets with open files.
+## Public support files
+
+- `scripts/archive-resident-files.py`
+- `scripts/cleanup-inactive-caches.py`

@@ -247,3 +247,9 @@ After editing:
 # For provider switches, validate full sync
 ~/.hermes/hermes-agent/venv/bin/python3 ~/.hermes/scripts/switch-provider.py --validate (user-local — verify it exists)
 ```
+## Public support files
+
+- `references/compression-oem-vs-custom.md`
+- `references/mnemosyne-sleep-vs-memory-optimization.md`
+- `references/model-metadata-fallbacks.md`
+- `scripts/verify-compression.py`

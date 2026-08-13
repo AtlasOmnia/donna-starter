@@ -83,7 +83,6 @@ Interpretation:
 The answer cost comes from replaying bulky tool outputs, not from the final response itself.
 
 ## Concrete lesson from a live session
-Session: `<session-id>`
 
 Observed pattern:
 - one user question about an X post

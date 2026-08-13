@@ -216,3 +216,6 @@ python3 ~/.hermes/skills/productivity/maps/scripts/maps_client.py search "Statue
 python3 ~/.hermes/skills/productivity/maps/scripts/maps_client.py nearby --near "Times Square" --category restaurant --limit 3
 # Should return a list of restaurants within ~500m of Times Square
 ```
+## Public support files
+
+- `scripts/maps_client.py`

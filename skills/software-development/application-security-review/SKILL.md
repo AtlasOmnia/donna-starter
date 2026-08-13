@@ -62,7 +62,7 @@ For native iOS commercial-readiness reviews, load and follow the readiness check
  - dependency versions with known advisories
 5. For public-release/privacy scans, include repository metadata and the actual remote publication surface as well as source:
  - Before first push, inspect staged/tracked files, local author metadata, and reachable history to catch accidental local-hostname identities and workstation paths.
- - Scan tracked/source files for emails, hostnames, `/Users/<name>`, `C:\\Users\\<name>`, private profile names, internal org names, token prefixes, and generated run artifacts.
+ - Scan tracked/source files for emails, hostnames, `<user-home>/...`, `C:\\Users\\<name>`, private profile names, internal org names, token prefixes, and generated run artifacts.
  - After push or history rewrite, make the publication verdict from a fresh remote clone/mirror, every public branch/tag and PR ref, PR text, commit metadata, and all reachable blobs. Do not count ignored files, virtual environments, local reflogs, or stale remote-tracking refs as currently published content.
  - Use an independent-model review when practical, then verify findings yourself; classifiers often mislabel loopback, placeholder paths, or code symbols as PII.
  - Confirm the update reaches the intended default/publication branch rather than remaining only on a feature branch.
@@ -229,11 +229,15 @@ Typical blocking evidence patterns:
 - When types that represent authentication scopes or resource access (`CredentialKind`, `PermissionScope`, `Role`) appear on both sides of a trust boundary, verify they define exactly the same set of values. A drift that omits a kind from the renderer side means the renderer can never request that kind — confusing but not a vulnerability. A drift that includes extra kinds on the renderer side means the renderer can request access that the backend does not recognize as valid — silent auth bypass.
 
 ## Support files
-- — independent rereview: verify prior code-review findings (F-001 through F-004) against a new commit with finding-by-finding disposition, TOCTOU/ACL/canonical-key/active-plugin checklists, edge-case matrix, and verdict format.
-- — exact allowlisted diagnostic schemas, code-only recording, payload-free privileged IPC, atomic export, consent/disclosure rules, adversarial tests, and bounded reviewer recovery.
-- — source-vault/path authority, parser resource limits, exact grounding citations, immutable publishing, packet-scoped assessment, real model-client proof, and reviewer acceptance gates.
-- — pre-push identity/path checks, history remediation, fresh-remote verification, and purge limitations.
-- — example review notes for an Office add-in that proxies to a full Hermes agent.
-- — detailed review checklist for local MCP sidecars and exposure posture.
-- — legacy IPC authority, canonical AI-profile binding, provenance persistence, secure-storage edge cases, and deletion-derived state.
-- — end-to-end SwiftUI/App Store productization review workflow for realtime voice and AI apps.
+- `references/quality-security-rereview.md` — independent rereview: verify prior code-review findings (F-001 through F-004) against a new commit with finding-by-finding disposition, TOCTOU/ACL/canonical-key/active-plugin checklists, edge-case matrix, and verdict format.
+- `references/privacy-safe-support-reports.md` — exact allowlisted diagnostic schemas, code-only recording, payload-free privileged IPC, atomic export, consent/disclosure rules, adversarial tests, and bounded reviewer recovery.
+- `references/hermes-office-review.md` — example review notes for an Office add-in that proxies to a full Hermes agent.
+- `references/profile-bound-ai-desktop-review.md` — legacy IPC authority, canonical AI-profile binding, provenance persistence, secure-storage edge cases, and deletion-derived state.
+- `references/ios-commercial-product-readiness.md` — end-to-end SwiftUI/App Store productization review workflow for realtime voice and AI apps.
+## Public support files
+
+- `references/hermes-office-review.md`
+- `references/ios-commercial-product-readiness.md`
+- `references/privacy-safe-support-reports.md`
+- `references/profile-bound-ai-desktop-review.md`
+- `references/quality-security-rereview.md`

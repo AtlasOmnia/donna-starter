@@ -115,7 +115,7 @@ Tell the user:
 > 6. Download the JSON file and tell me the file path
 >
 > Important Hermes CLI note: if the file path starts with `/`, do NOT send only the bare path as its own message in the CLI, because it can be mistaken for a slash command. Send it in a sentence instead, like:
-> `The JSON file path is: /home/user/Downloads/client_secret_....json`
+> `The JSON file path is: <user-home>/Downloads/client_secret_....json`
 
 Once they provide the path:
 
@@ -424,3 +424,10 @@ Note: macOS Calendar.app can hang on AppleScript queries — if `osascript` does
 ```bash
 $GSETUP --revoke
 ```
+## Public support files
+
+- `references/gmail-search-syntax.md`
+- `scripts/_hermes_home.py`
+- `scripts/google_api.py`
+- `scripts/gws_bridge.py`
+- `scripts/setup.py`

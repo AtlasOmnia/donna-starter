@@ -76,5 +76,3 @@ Avoid broad explanations of Hermes unless he asks. He usually wants the practica
 - **Phone/SMS/voice are rarely free at scale.** Assume carrier/service costs unless docs explicitly say otherwise.
 - **Hosted tunnels/webhooks imply external data flow.** Flag this before installation.
 - **Do not install first just to answer pricing/trust questions.** Inspect first, then ask/confirm before side effects.
-
-- — condensed findings from evaluating `inkbox-ai/hermes-agent-plugin` for cost, setup requirements, and data-flow implications.

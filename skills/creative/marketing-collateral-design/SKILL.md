@@ -317,3 +317,12 @@ Use the full scoring rubric and critique-only format in visual-qa-rubric.md. Rec
 - [ ] At least one fix-and-rerender cycle completed
 - [ ] Anti-slop score recorded before and after repair
 - [ ] Editable source and final exports delivered
+## Public support files
+
+- `scripts/preflight_artifact.py`
+- `scripts/preflight_pdf.py`
+- `scripts/render_artifact.py`
+- `scripts/requirements.txt`
+- `scripts/test_skill.py`
+- `templates/canvas.html`
+- `templates/flyer.html`

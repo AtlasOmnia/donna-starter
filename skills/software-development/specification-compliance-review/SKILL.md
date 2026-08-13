@@ -199,18 +199,15 @@ Before declaring a milestone-built product complete:
 
 ## Support files
 
-- — reusable requirement matrix, adversarial test audit, and async pipeline race patterns.
-- — spec rereview of an amended commit: prior-finding disposition table, delta baselines, native closeout gate as separate verification layer.
-- — distinguish accepted milestone scope from whole-product completeness and structure bounded phase handoffs.
-- — concrete desktop-app case: batch closure passed while lane, files, OS-attention, and release work remained.
-- — hidden-own-property, cap-proof, deterministic-ordering, and content-free-error probes for `unknown`-input validators.
-- — pre-implementation plan review: turn unproven runtime/API assumptions into gated spikes and apply explicit threat-model boundaries.
-- — reconcile producer/consumer health, auth, lifecycle, ownership, and script contracts; reject dead test helpers and wrapper-exit acceptance.
-- — session-specific pattern for rejecting queued provider/audio callbacks from stale lifecycle generations.
-- — session-specific pattern for rejecting queued provider/audio callbacks from stale lifecycle generations.
-- — session-specific pattern for separated Release debug/test assertions.
-- — concrete destination discovery + simctl/toolchain triage flow for simulator-based verification.
-- — class-level review case notes for iOS consumer-mode/job + localization tests and matrix evidence.
+- `references/spec-compliance-review.md` — reusable requirement matrix, adversarial test audit, and async pipeline race patterns.
+- `references/amended-commit-rereview.md` — spec rereview of an amended commit: prior-finding disposition table, delta baselines, native closeout gate as separate verification layer.
+- `references/milestone-vs-product-completeness.md` — distinguish accepted milestone scope from whole-product completeness and structure bounded phase handoffs.
+- `references/typescript-validator-adversarial-review.md` — hidden-own-property, cap-proof, deterministic-ordering, and content-free-error probes for `unknown`-input validators.
+- `references/load-bearing-assumption-spikes.md` — pre-implementation plan review: turn unproven runtime/API assumptions into gated spikes and apply explicit threat-model boundaries.
+- `references/cross-repository-contract-reconciliation.md` — reconcile producer/consumer health, auth, lifecycle, ownership, and script contracts; reject dead test helpers and wrapper-exit acceptance.
+- `references/start-stop-generation-race.md` — session-specific pattern for rejecting queued provider/audio callbacks from stale lifecycle generations.
+- `references/late-callback-generation-gating.md` — session-specific pattern for rejecting queued provider/audio callbacks from stale lifecycle generations.
+- `references/ios-simulator-triage.md` — concrete destination discovery + simctl/toolchain triage flow for simulator-based verification.
 
 - Treat instrumentation scope as part of the requirement: a counter around individual `send()` calls does not prove a transport- or worker-lifetime invariant. For a true one-active proof, enter when each transport/worker is created, leave only after its receive loop and cleanup have completed, and assert the maximum across the entire handoff.
 - When a test claims to prove cancellation-resistant cleanup, inspect the fake transport's cancellation semantics and wait for both cancellation and worker completion. A test that only observes an error callback or a single cancellation flag can miss leaked work.
@@ -501,3 +498,14 @@ Before finalizing:
 - [ ] Build/test limitations are explicit, including exact fallback destinations.
 - [ ] Findings have exact paths/lines and concrete scenarios.
 - [ ] Verdict is clear and appears before details.
+## Public support files
+
+- `references/amended-commit-rereview.md`
+- `references/cross-repository-contract-reconciliation.md`
+- `references/ios-simulator-triage.md`
+- `references/late-callback-generation-gating.md`
+- `references/load-bearing-assumption-spikes.md`
+- `references/milestone-vs-product-completeness.md`
+- `references/spec-compliance-review.md`
+- `references/start-stop-generation-race.md`
+- `references/typescript-validator-adversarial-review.md`

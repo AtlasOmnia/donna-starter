@@ -168,3 +168,6 @@ The ONLY import surface is `@hermes/plugin-sdk` (plus `react` /
 - No error toast ("Plugin <name> failed to load") appears; if it does, the
  message names the failure — fix and reload.
 - For panes: the new zone is visible and draggable like any core pane.
+## Public support files
+
+- `templates/plugin.js`

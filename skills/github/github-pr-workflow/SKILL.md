@@ -37,14 +37,10 @@ Complete guide for managing the PR lifecycle. Each section shows the `gh` way fi
 if command -v gh &>/dev/null && gh auth status &>/dev/null; then
  AUTH="gh"
 else
- AUTH="git"
- # Ensure we have a token for API calls
- if [ -z "$GITHUB_TOKEN" ]; then
- if _hermes_env="${HERMES_HOME:-$HOME/.hermes}/.env"; [ -f "$_hermes_env" ] && grep -q "^GITHUB_TOKEN=" "$_hermes_env"; then
- GITHUB_TOKEN=$(grep "^GITHUB_TOKEN=" "$_hermes_env" | head -1 | cut -d= -f2 | tr -d '\n\r')
-# Plaintext ~/.git-credentials is intentionally not used; prefer `gh auth login` or GITHUB_TOKEN in .env
- fi
- fi
+  AUTH="git"
+  if [ -z "${GITHUB_TOKEN:-}" ]; then
+    echo "GITHUB_TOKEN is not set; use gh auth login or an approved secure environment setup."
+  fi
 fi
 echo "Using: $AUTH"
 ```
@@ -374,3 +370,7 @@ git push -u origin HEAD
 | Request review | `gh pr edit N --add-reviewer user` | `curl -X POST .../pulls/N/requested_reviewers -d '{"reviewers":["user"]}'` |
 | Close PR | `gh pr close N` | `curl -X PATCH .../pulls/N -d '{"state":"closed"}'` |
 | Check out someone's PR | `gh pr checkout N` | `git fetch origin pull/N/head:pr-N && git checkout pr-N` |
+## Public support files
+
+- `templates/pr-body-bugfix.md`
+- `templates/pr-body-feature.md`

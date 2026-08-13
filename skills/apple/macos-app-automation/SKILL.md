@@ -306,3 +306,17 @@ Reference: `references/icloud-dataless-files.md` covers diagnosing `dataless` pl
 - Do not type or request secrets through AppleScript or GUI automation.
 - Do not click permission dialogs yourself unless the user explicitly instructs you to; ask him to approve macOS privacy prompts.
 - For destructive app commands such as emptying trash, deleting records, payments, or submissions, confirm scope before executing.
+## Public support files
+
+- `references/apple-mail-multi-account-search.md`
+- `references/chrome-native-messaging-hosts.md`
+- `references/chromium-file-upload-fallback.md`
+- `references/cua-session-recovery.md`
+- `references/desktop-launcher-icon-workflow.md`
+- `references/electron-smoke-isolation.md`
+- `references/icloud-dataless-files.md`
+- `references/macos-memory-process-cleanup.md`
+- `references/notes-creation-date-count.md`
+- `references/safari-screenshot-evidence.md`
+- `references/tauri-native-app-bundle-isolation.md`
+- `references/terminal-frozen-last-login.md`

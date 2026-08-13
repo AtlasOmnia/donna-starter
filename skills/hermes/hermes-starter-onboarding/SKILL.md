@@ -24,7 +24,7 @@ metadata:
  related_skills:
  - hermes-agent
  - hermes-mnemosyne
- ---
+---
 # Hermes Starter Onboarding
 
 ## Overview

@@ -170,3 +170,6 @@ Save the report to `{output_dir}/report.md`.
 - **For public-visibility complaints, verify the governing setting instead of inferring from render success.** Example: on Reddit wiki pages, a page can render for a mod while incognito users get "This page has been disabled." Check the page's own settings.
 - **Reddit-specific pitfall:** on a wiki page's Settings tab, `Who can edit = Mods only` effectively disables the public URL, even if `Show in wiki` is enabled. `Show in wiki` only controls listing/navigation, not whether anonymous users can open the page.
 - When reporting screenshots to the user, include `MEDIA:<screenshot_path>` so they can see the evidence inline.
+## Public support files
+
+- `templates/dogfood-report-template.md`

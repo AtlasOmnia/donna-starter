@@ -1,6 +1,5 @@
 # Compression Runtime and Fallback Behavior
 
-Session: the user noticed "Preflight compression" banner but no LM Studio activity; suspected main model was being used.
 
 Key findings:
 
