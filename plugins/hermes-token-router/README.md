@@ -46,9 +46,6 @@ The safe default is disabled. Important v2 settings:
 ```yaml
 global:
   enabled: false
-  routing_scope: first_turn
-  expansion_mode: monotonic
-  shrink_mid_session: false
   floor_toolsets: []
   deterministic_rules_enabled: true
   confidence_threshold: 0.90
@@ -56,6 +53,8 @@ global:
   classifier:
     enabled: false
 ```
+
+The router does not read routing_scope, expansion_mode, or shrink_mid_session; first-turn routing, session stickiness, and monotonic recovery are fixed runtime behavior in v0.2, not user-configurable modes.
 
 The classifier remains opt-in because adding a network request before every uncertain main-model call can erase latency gains. When disabled, unresolved deterministic requests keep all tools. Direct DeepSeek is the default hosted classifier; OpenRouter is used only when explicitly selected. A local OpenAI-compatible endpoint can be configured as:
 

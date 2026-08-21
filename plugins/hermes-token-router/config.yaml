@@ -1,8 +1,5 @@
 global:
   enabled: false
-  routing_scope: first_turn
-  expansion_mode: monotonic
-  shrink_mid_session: false
   floor_toolsets: []
   deterministic_rules_enabled: true
   confidence_threshold: 0.9
@@ -25,9 +22,6 @@ profiles:
     # Router is DISABLED by default. To enable: flip this to true
     # (and add hermes-token-router back to plugins.enabled in config.yaml).
     enabled: false
-    routing_scope: first_turn
-    expansion_mode: monotonic
-    shrink_mid_session: false
     floor_toolsets: []
     deterministic_rules_enabled: true
     confidence_threshold: 0.9
