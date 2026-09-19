@@ -86,23 +86,46 @@ class FakeAgent:
     enabled_toolsets: list[str]
 
 
+def _new_agent(registry: FakeRegistry, *, session_id: str | None = None) -> FakeAgent:
+    return FakeAgent(
+        session_id=session_id or f"session-{uuid4().hex}",
+        _current_turn_id="",
+        tools=registry.get_definitions({"web_search", "read_file", "request_toolset"}),
+        valid_tool_names={"web_search", "read_file", "request_toolset"},
+        enabled_toolsets=["web", "file", "router_recovery"],
+    )
+
+
 @pytest.fixture()
 def router_harness(monkeypatch):
     original_sys_path = sys.path[:]
-    original_tools = sys.modules.pop("tools", None)
     sys.path[:] = [
         entry
         for entry in sys.path
         if Path(entry or ".").resolve() != PACKAGE_DIR
     ]
-    try:
-        from agent.subagent_lifecycle import bind_subagent_parent
-    except Exception:
-        if original_tools is not None:
-            sys.modules["tools"] = original_tools
-        raise
-    finally:
-        sys.path[:] = original_sys_path
+    from contextlib import contextmanager
+    from contextvars import ContextVar
+
+    active_parent = ContextVar(f"active_subagent_parent_{uuid4().hex}", default=None)
+
+    @contextmanager
+    def bind_subagent_parent(agent):
+        token = active_parent.set(agent)
+        try:
+            yield
+        finally:
+            active_parent.reset(token)
+
+    lifecycle_module = ModuleType("agent.subagent_lifecycle")
+    lifecycle_module.bind_subagent_parent = bind_subagent_parent
+    lifecycle_module.get_active_subagent_parent = active_parent.get
+    agent_module = ModuleType("agent")
+    agent_module.__path__ = []
+    agent_module.subagent_lifecycle = lifecycle_module
+    monkeypatch.setitem(sys.modules, "agent", agent_module)
+    monkeypatch.setitem(sys.modules, "agent.subagent_lifecycle", lifecycle_module)
+    sys.path[:] = original_sys_path
 
     registry = FakeRegistry()
     tools_pkg = ModuleType("tools")
@@ -137,19 +160,14 @@ def router_harness(monkeypatch):
 
     monkeypatch.setattr(router, "_predict_toolsets_by_rules", predict_spy)
 
-    agent = FakeAgent(
-        session_id=f"session-{uuid4().hex}",
-        _current_turn_id="",
-        tools=registry.get_definitions({"web_search", "read_file", "request_toolset"}),
-        valid_tool_names={"web_search", "read_file", "request_toolset"},
-        enabled_toolsets=["web", "file", "router_recovery"],
-    )
+    agent = _new_agent(registry)
 
     yield SimpleNamespace(
         agent=agent,
         registry=registry,
         calls=call_log,
         bind_subagent_parent=bind_subagent_parent,
+        get_active_subagent_parent=active_parent.get,
     )
 
     router.on_session_end(session_id=agent.session_id)
@@ -260,3 +278,59 @@ def test_late_hook_uses_context_bound_agent_in_copied_worker(router_harness):
     assert _tool_names(agent) == {"web_search", "request_toolset"}
     assert len(router_harness.calls) == 1
     assert router._get_agent_ref(session_id) is agent
+
+
+def test_copied_context_lifecycle_isolated_by_session(router_harness):
+    from concurrent.futures import ThreadPoolExecutor
+    from contextvars import copy_context
+
+    first = router_harness.agent
+    second = _new_agent(router_harness.registry)
+
+    def invoke_late_hook(session_id: str, turn_id: str):
+        return router.pre_llm_call(
+            session_id=session_id,
+            turn_id=turn_id,
+            user_message="search the web for the current docs",
+        )
+
+    try:
+        with router_harness.bind_subagent_parent(first):
+            first_context = copy_context()
+        with router_harness.bind_subagent_parent(second):
+            second_context = copy_context()
+
+        assert first_context.run(router_harness.get_active_subagent_parent) is first
+        assert second_context.run(router_harness.get_active_subagent_parent) is second
+
+        with ThreadPoolExecutor(max_workers=1) as executor:
+            wrong_session = executor.submit(
+                first_context.run,
+                invoke_late_hook,
+                second.session_id,
+                "cross-session",
+            ).result()
+            second_result = executor.submit(
+                second_context.run,
+                invoke_late_hook,
+                second.session_id,
+                "second-turn",
+            ).result()
+            first_result = executor.submit(
+                first_context.run,
+                invoke_late_hook,
+                first.session_id,
+                "first-turn",
+            ).result()
+
+        assert wrong_session is None
+        assert second_result is None
+        assert first_result is None
+        assert _tool_names(first) == {"web_search", "request_toolset"}
+        assert _tool_names(second) == {"web_search", "request_toolset"}
+        assert router._get_agent_ref(first.session_id) is first
+        assert router._get_agent_ref(second.session_id) is second
+        assert len(router_harness.calls) == 2
+    finally:
+        router.on_session_end(session_id=first.session_id)
+        router.on_session_end(session_id=second.session_id)
