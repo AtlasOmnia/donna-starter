@@ -54,6 +54,7 @@ try:
         _drop_agent_ref,
         _get_agent_from_stack,
         _get_agent_ref,
+        _get_context_bound_agent,
         _get_router_state,
         _store_agent_ref,
     )
@@ -124,6 +125,7 @@ except ImportError:  # pragma: no cover - direct loader fallback
         _drop_agent_ref,
         _get_agent_from_stack,
         _get_agent_ref,
+        _get_context_bound_agent,
         _get_router_state,
         _store_agent_ref,
     )
@@ -1017,9 +1019,24 @@ def _route_tool_surface(
     """Capture admission before empty-message exits, then route one surface."""
     cfg = _load_config()
     if agent is None:
-        agent = _get_agent_from_stack() or _get_agent_ref(
-            str(kwargs.get("session_id") or "") or None
-        )
+        requested_session_id = str(kwargs.get("session_id") or "")
+        if source == "pre_llm_call":
+            context_agent = _get_context_bound_agent()
+            try:
+                context_session_id = str(getattr(context_agent, "session_id", "") or "")
+            except Exception:
+                context_agent = None
+                context_session_id = ""
+            if (
+                context_agent is not None
+                and requested_session_id
+                and context_session_id == requested_session_id
+            ):
+                agent = context_agent
+        if agent is None:
+            agent = _get_agent_from_stack() or _get_agent_ref(
+                requested_session_id or None
+            )
     session_id = str(kwargs.get("session_id") or getattr(agent, "session_id", "") or "")
     if agent is not None:
         _store_agent_ref(agent, session_id)

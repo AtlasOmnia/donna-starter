@@ -52,6 +52,19 @@ def _get_agent_from_stack() -> Any:
         del frame  # prevent reference cycles
     return None
 
+
+def _get_context_bound_agent() -> Any:
+    """Return the host-bound agent without depending on Hermes internals."""
+    try:
+        from agent import subagent_lifecycle
+
+        return subagent_lifecycle.get_active_subagent_parent()
+    except Exception:
+        # Hermes versions without the public seam, or a failing host accessor,
+        # must preserve the existing stack/session-reference fallback.
+        return None
+
+
 class RouterState:
     """Per-conversation state for the tool router."""
 

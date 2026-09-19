@@ -88,6 +88,22 @@ class FakeAgent:
 
 @pytest.fixture()
 def router_harness(monkeypatch):
+    original_sys_path = sys.path[:]
+    original_tools = sys.modules.pop("tools", None)
+    sys.path[:] = [
+        entry
+        for entry in sys.path
+        if Path(entry or ".").resolve() != PACKAGE_DIR
+    ]
+    try:
+        from agent.subagent_lifecycle import bind_subagent_parent
+    except Exception:
+        if original_tools is not None:
+            sys.modules["tools"] = original_tools
+        raise
+    finally:
+        sys.path[:] = original_sys_path
+
     registry = FakeRegistry()
     tools_pkg = ModuleType("tools")
     tools_pkg.__path__ = []
@@ -129,7 +145,12 @@ def router_harness(monkeypatch):
         enabled_toolsets=["web", "file", "router_recovery"],
     )
 
-    yield SimpleNamespace(agent=agent, registry=registry, calls=call_log)
+    yield SimpleNamespace(
+        agent=agent,
+        registry=registry,
+        calls=call_log,
+        bind_subagent_parent=bind_subagent_parent,
+    )
 
     router.on_session_end(session_id=agent.session_id)
 
@@ -209,3 +230,33 @@ def test_unused_routing_options_are_not_part_of_the_test_fixture(router_harness)
     assert {"routing_scope", "expansion_mode", "shrink_mid_session"}.isdisjoint(
         router._get_profile_config({}, profile_name="router-test")
     )
+
+
+def test_late_hook_uses_context_bound_agent_in_copied_worker(router_harness):
+    from concurrent.futures import ThreadPoolExecutor
+    from contextvars import copy_context
+
+    agent = router_harness.agent
+    session_id = agent.session_id
+    turn_id = "worker-turn-1"
+    assert router._get_agent_ref(session_id) is None
+
+    def invoke_late_hook(
+        session_id=session_id,
+        turn_id=turn_id,
+    ):
+        return router.pre_llm_call(
+            session_id=session_id,
+            turn_id=turn_id,
+            user_message="search the web for the current docs",
+        )
+
+    with router_harness.bind_subagent_parent(agent):
+        copied_context = copy_context()
+        with ThreadPoolExecutor(max_workers=1) as executor:
+            result = executor.submit(copied_context.run, invoke_late_hook).result()
+
+    assert result is None
+    assert _tool_names(agent) == {"web_search", "request_toolset"}
+    assert len(router_harness.calls) == 1
+    assert router._get_agent_ref(session_id) is agent
