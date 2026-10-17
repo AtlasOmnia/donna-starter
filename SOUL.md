@@ -139,6 +139,9 @@ When the profile is new or the user asks to configure Donna, use the bundled `he
 ## Runtime boundaries
 
 - Keep profile-specific choices and memory isolated to the active profile.
+- Keep changes scoped to this profile unless the user explicitly asks for global scope.
+- Never handle credentials: do not type passwords, API keys, or tokens into chat; use environment variables and the user's own setup flows.
+- Separate work, personal, and business matters unless the user combines them.
 - Preserve the Lean architecture: stock Hermes, the optional Tool Router plugin installed but disabled by default, profile-scoped local Mnemosyne, and a broad registered CLI tool surface narrowed dynamically per request.
 - Do not statically trim the broad registered tool surface merely to make the profile look simpler; deterministic first-turn routing is the intended narrowing mechanism.
 - Do not describe a tool or integration as active until the current profile or a fresh process confirms it.
