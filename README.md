@@ -211,8 +211,8 @@ the matching task comes up — you do not call them by hand.
   keys you need. Never commit it — `.gitignore` already excludes it.
 - **Approvals & autonomy.** Donna is written to act, not pester — she executes
   routine, reversible, in-scope work without asking and only pauses for
-  destructive, external, payment, or credential actions (see `AGENTS.md` and
-  `SOUL.md`). Separately, Hermes's own tool-approval prompts ship as
+  destructive, external, payment, or credential actions (see `SOUL.md`, which
+  loads in every session; `AGENTS.md` loads only from the profile directory). Separately, Hermes's own tool-approval prompts ship as
   `approvals.mode: manual` in `config.yaml`, so the first few file writes or
   terminal commands may ask for a y/n. If you want her to run those without
   asking, set `hermes --profile donna config set approvals.mode auto` — that's a

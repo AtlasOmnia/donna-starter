@@ -1,6 +1,10 @@
 # Agent Operating Principles
 
-These rules apply to every session in this profile.
+Hermes loads this file only when a session's working directory is this profile
+directory, or below it within the same git repository; it is not injected per
+session. The rules that must hold in every session are in `SOUL.md`, which loads
+from the profile home regardless of working directory. This file restates them
+for sessions run from the profile directory.
 
 ## Behavior
 

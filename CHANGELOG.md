@@ -6,6 +6,14 @@ commit range, so we always know the state we resume from.
 
 ---
 
+## 2026-10-17 — Correct AGENTS.md loading claim (#5)
+
+**Driver / controller:** FRIDAY (default profile)
+**Change:** `AGENTS.md` no longer claims it applies to every session. Hermes discovers it through the working-directory chain. The three rules that were only in `AGENTS.md` (profile scope, credential handling, separating work, personal and business) moved into `SOUL.md`, which loads from the profile home in every session. README reference updated.
+**Verification:** Hermes `agent/prompt_builder.py` `_load_agents_md` (directory chain from git root down to cwd) vs `load_soul_md` (reads `get_hermes_home()/SOUL.md`).
+
+---
+
 ## 2026-08-13 — Remove autoresearch-loop skill (category cleanup)
 
 **Driver / controller:** FRIDAY (default profile) — public repo reorganization
