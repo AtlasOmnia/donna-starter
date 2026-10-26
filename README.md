@@ -1,5 +1,7 @@
 # Donna — a starter Hermes profile
 
+> Part of the AtlasOmnia Hermes Agent toolset → [hermesagenttools.com/hermes-agent/](https://hermesagenttools.com/hermes-agent/)
+
 ![Donna](assets/donna.png)
 
 Donna is a pre-configured [Hermes Agent](https://hermes-agent.nousresearch.com/docs)
